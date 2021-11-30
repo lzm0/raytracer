@@ -1,8 +1,10 @@
 use crate::hittable::*;
 use crate::ray::*;
+use std::sync::Arc;
 
+#[derive(Clone)]
 pub struct HittableList {
-    pub objects: Vec<Box<dyn Hittable>>,
+    pub objects: Vec<Arc<dyn Hittable + Sync + Send>>,
 }
 
 impl HittableList {
@@ -12,11 +14,15 @@ impl HittableList {
         }
     }
 
+    pub fn from_vec(objects: Vec<Arc<dyn Hittable + Sync + Send>>) -> Self {
+        HittableList { objects }
+    }
+
     pub fn clear(&mut self) {
         self.objects.clear();
     }
 
-    pub fn add(&mut self, object: Box<dyn Hittable>) {
+    pub fn add(&mut self, object: Arc<dyn Hittable + Sync + Send>) {
         self.objects.push(object);
     }
 }

@@ -3,10 +3,10 @@ A simple ray tracer written in rust.
 
 ## Features
  - [x] Diffuse
+ - [x] Multithreading
  - [ ] Metal
  - [ ] Glass
  - [ ] DOF
- - [ ] Multithreading
 
 ## Usage
 
