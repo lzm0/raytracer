@@ -1,10 +1,13 @@
+use crate::material::*;
 use crate::ray::*;
 use crate::vec3::*;
+use std::sync::Arc;
 
-#[derive(Clone, Copy)]
+#[derive(Clone)]
 pub struct HitRecord {
     pub p: Point3,
     pub normal: Vec3,
+    pub mat_ptr: Arc<dyn Material>,
     pub t: f32,
     pub front_face: bool,
 }
@@ -14,6 +17,7 @@ impl HitRecord {
         HitRecord {
             p: Point3::zero(),
             normal: Vec3::zero(),
+            mat_ptr: Ma,
             t: 0.0,
             front_face: false,
         }
@@ -28,7 +32,6 @@ impl HitRecord {
     }
 }
 
-#[allow(unused)]
 pub trait Hittable {
     fn hit(&self, r: &Ray, t_min: f32, t_max: f32, mut rec: &mut HitRecord) -> bool {
         false

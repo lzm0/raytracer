@@ -2,6 +2,7 @@ mod camera;
 mod color;
 mod hittable;
 mod hittable_list;
+mod material;
 mod ray;
 mod sphere;
 mod utils;
@@ -15,6 +16,7 @@ pub use camera::*;
 pub use color::*;
 pub use hittable::*;
 pub use hittable_list::*;
+pub use material::*;
 pub use ray::*;
 pub use sphere::*;
 pub use utils::*;
@@ -40,7 +42,7 @@ fn main() {
     let aspect_ratio: f32 = 16.0 / 9.0;
     let image_width: i32 = 400;
     let image_height: i32 = ((image_width as f32) / aspect_ratio) as i32;
-    let samples_per_pixel: i32 = 512;
+    let samples_per_pixel: i32 = 100;
     let max_depth: i32 = 100;
 
     let concurrency = 8;
